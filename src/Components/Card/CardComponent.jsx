@@ -1,26 +1,37 @@
 import React from 'react';
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 
-function CardComponent() {
-    return (
-        <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-            <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
-                </Card.Text>
-            </Card.Body>
+import './CardComponent.scss';
+
+function CardComponent(props) {
+
+    function listProps(listP) {
+        var arr = [];
+        for (var x in listP) {
+            if ((x !== 'id' && x !== 'name' && x !== 'thumbnail') && (arr.length < 3)) {    
+                arr.push(x);
+            }
+        }
+        console.log(arr)
+        return (
             <ListGroup className="list-group-flush">
-                <ListGroupItem>Cras justo odio</ListGroupItem>
-                <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-                <ListGroupItem>Vestibulum at eros</ListGroupItem>
+
+                {arr.map((el, idx) => {
+                    return (
+                        <ListGroupItem>{el}:{' ' + listP[el]}</ListGroupItem>
+                    )
+                })}
             </ListGroup>
+        )
+    }
+
+    return (
+        <Card onClick='' className="Card">
+            <Card.Img className="holi" variant="top" src={props.element.thumbnail} />
             <Card.Body>
-                <Card.Link href="#">Card Link</Card.Link>
-                <Card.Link href="#">Another Link</Card.Link>
+                <Card.Title>{props.element.name}</Card.Title>
             </Card.Body>
+            {listProps(props.element)}
         </Card>
     );
 }

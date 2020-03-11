@@ -7,7 +7,7 @@ import './PrimaryContent.scss';
 function PrimaryContent() {
     return (
         <div >
-            <NavBar/>
+            <NavBar page="Main"/>
             <div className="container style">
                 Hello Primary Content
             </div>
