@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { useHistory } from "react-router-dom";
 
 import './CardComponent.scss';
 
@@ -8,11 +9,10 @@ function CardComponent(props) {
     function listProps(listP) {
         var arr = [];
         for (var x in listP) {
-            if ((x !== 'id' && x !== 'name' && x !== 'thumbnail') && (arr.length < 3)) {    
+            if ((x !== 'id' && x !== 'name' && x !== 'thumbnail') && (arr.length < 3)) {
                 arr.push(x);
             }
         }
-        console.log(arr)
         return (
             <ListGroup className="list-group-flush">
 
@@ -25,8 +25,15 @@ function CardComponent(props) {
         )
     }
 
+    const history = useHistory();
+
+    function handleClick() {
+        localStorage.setItem('element',JSON.stringify(props.element));
+        history.push(`/User:${props.element.id}`);
+    }
+
     return (
-        <Card onClick='' className="Card">
+        <Card onClick={handleClick} className="Card">
             <Card.Img className="holi" variant="top" src={props.element.thumbnail} />
             <Card.Body>
                 <Card.Title>{props.element.name}</Card.Title>

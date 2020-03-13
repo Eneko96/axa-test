@@ -2,18 +2,20 @@ import React, { useEffect, useState } from 'react';
 import NavBar from './../NavBar/NavBar';
 import CardComponent from './../Card/CardComponent';
 import PaginationComponent from './../Pagination/Pagination';
+import { Spinner } from 'react-bootstrap';
 
 import './PeopleComponent.scss';
 
 function People() {
 
+    
     const [content, setContent] = useState(undefined);
     useEffect(() => {
         setContent(JSON.parse(localStorage.getItem('Myinfo')));
     }, []);
-
+    
     function maping() {
-
+        
         if (content !== undefined) {
             return (
                 <div className="card-group cardTam">
@@ -21,19 +23,19 @@ function People() {
                         while (idx <= 23) {
                             return (
                                 <CardComponent element={el} key={idx} />
-                            )
-                        }
-                    })
+                                )
+                            }
+                        })
                     }
                 </div>
             )
         }
-        else return <div>loading</div>
+        else return <div> <Spinner animation="grow" variant="light" /></div>
     }
-
+    
     return (
         <div>
-            <NavBar page="T own" />
+            <NavBar page="Town" />
             <div className="stylecard">
                 {maping()}
                 <PaginationComponent />
