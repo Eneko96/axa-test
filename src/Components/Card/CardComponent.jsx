@@ -18,7 +18,7 @@ function CardComponent(props) {
 
                 {arr.map((el, idx) => {
                     return (
-                        <ListGroupItem>{el}:{' ' + listP[el]}</ListGroupItem>
+                        <ListGroupItem key={idx}>{el}:{' ' + listP[el]}</ListGroupItem>
                     )
                 })}
             </ListGroup>

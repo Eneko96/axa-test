@@ -1,5 +1,13 @@
 @import './../../App.scss';
 
+.Pagination {
+    //position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .cardTam {
     margin-left: 20px;
     flex-wrap: wrap;

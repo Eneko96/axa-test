@@ -1,17 +1,31 @@
 import React, { useState } from 'react';
 import { Navbar, Nav, Form, FormControl, Button, DropdownButton, ButtonGroup, Dropdown } from 'react-bootstrap';
 
+import './NavBar.scss';
+
 function NavBar(props) {
-    const [act,setAct] = useState(['','',''])
+    const [act, setAct] = useState(['', '', '']);
+    const [text, setText] = useState('');
+    const [filtElem, setFiltElement] = useState('');
 
     function dropDown() {
 
-        function isActive(elem) {
-            if (elem !== '') {
-                setAct[0]('active')
+        function isActive(elem, id) {
+            if (elem === '') elem = 'active';
+            else elem = '';
+            var aux = ['', '', ''];
+            aux[id] = elem;
+            setAct(aux);
+            
+            if (id === '0') {
+                setFiltElement('Age');
             }
-            else setAct('');
+            else if (id === '1') {
+                setFiltElement('Profession');
+            }
+            else setFiltElement('Name');
         }
+
         return (
             <div>
                 <DropdownButton
@@ -20,18 +34,23 @@ function NavBar(props) {
                     id={`dropdown-variants-${'variant'}`}
                     variant={'variant.toLowerCase()'}
                     title="Filter"
-                >
-                    <Dropdown.Item eventKey="1">Age</Dropdown.Item>
-                    <Dropdown.Item eventKey="2" onChange={isActive(act[0])} active={act}>Profession</Dropdown.Item>
-                    <Dropdown.Item eventKey="3" active={isActive(act)}>
-                        Active Item
+                    >
+                    <Dropdown.Item eventKey="0" onClick={() => isActive(act[0], '0')} active={`${act[0]}`}>Age</Dropdown.Item>
+                    <Dropdown.Item eventKey="1" onClick={() => isActive(act[1], '1')} active={act[1]}>Profession</Dropdown.Item>
+                    <Dropdown.Item eventKey="2" onClick={() => isActive(act[2], '2')} active={act[2]}>
+                        Name
                     </Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
-                </DropdownButton>{' '}
-
+                </DropdownButton>
             </div>
         )
+    }
+
+    const handleChange = event => {
+        setText(event.target.value);
+    }
+
+    function sendParent() {
+        props.filt([filtElem,text]);
     }
 
     return (
@@ -43,8 +62,8 @@ function NavBar(props) {
                 </Nav>
                 {dropDown()}
                 <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    <Button variant="outline-info">Search</Button>
+                    <FormControl type="text" value={text} onChange={handleChange} placeholder="Search" className="mr-sm-2" />
+                    <Button variant="outline-info" onClick={sendParent}>Search</Button>
                 </Form>
             </Navbar>
         </div>
