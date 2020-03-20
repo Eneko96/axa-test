@@ -1,20 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Pagination } from 'react-bootstrap';
 
 import './Paginator.scss';
 
 function PaginationComponent(props) {
-    let active = 1;
+    const [active, setActive] = useState(1);
     let items = [];
-    for (let number = 1; number <= 5; number++) {
+    var rounded = (Math.round(props.num / 23));
+    console.log(props.currentPag)
+    console.log(props.currentPag+5)
+    for (let number = props.currentPag; number <= props.currentPag+3; number++) {
         items.push(
-            <Pagination.Item key={number} active={number === active} onClick={props.pag(active)}>{number}</Pagination.Item>
+            <Pagination.Item key={number} active={number === active} onClick={() => paginator(number)}>{number}</Pagination.Item>
         );
     }
 
+    function paginator(element) {
+        setActive(element);
+        props.pag(element);
+    }
+    console.log(props.num)
     return (
         <div className="Paginator">
-            <Pagination size="sm">{items}</Pagination>
+            <Pagination size="sm">
+                <Pagination.Prev onClick={() => paginator(props.currentPag-1)}/>
+                {items}
+                <Pagination.Next onClick={() => paginator(props.currentPag+1)}/>
+            </Pagination>
         </div>
     );
 }
