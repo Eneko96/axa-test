@@ -38,35 +38,14 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## `Basic brieffing of web application`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+We have in here 3 basic `components`, which them function are, to show us a main page, a page with all the people on Brastlewark, and the last one, for giving a detailed information about citizen.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+I used in all the React project bootstrap and a bit of a personal css code.
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+All of the inside code and logical algotithms are all made by myself. I did them easier as I could in order to give it readability.
 =======
 # axa-test
 >>>>>>> b9f6dee0f3492b592eed2d2dd73a78b2883d6e61
+
